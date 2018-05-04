@@ -242,10 +242,10 @@ subto Spring3_course:
             1 <= M21Ds3 +  M22A_108_67s3 + M22Bs3 + M127As3 + M127Bs3 + M185As3 + M135As3 + M150As3 + M150Bs3 + M150Cs3 + M_elective1s3 + M_elective2s3 + M_elective3s3 + M_elective4s3 <= 3;
 
 subto Fall4_course:
-            1 <= M21Df4 +  M22A_108_67f4 + M22Bf4 + M127Af4 + M127Bf4 + M185Af4 + M135Af4 + M150Af4 + M150Bf4 + M150Cf4 + M_elective1f4 + M_elective2f4 + M_elective3f4 + M_elective4f4 <= 3;
+            M21Df4 +  M22A_108_67f4 + M22Bf4 + M127Af4 + M127Bf4 + M185Af4 + M135Af4 + M150Af4 + M150Bf4 + M150Cf4 + M_elective1f4 + M_elective2f4 + M_elective3f4 + M_elective4f4 <= 3;
 
 subto Winter4_course:
-            1 <= M21Dw4 +  M22A_108_67w4 + M22Bw4 + M127Aw4 + M127Bw4 + M185Aw4 + M135Aw4 + M150Aw4 + M150Bw4 + M150Cw4 + M_elective1w4 + M_elective2w4 + M_elective3w4 + M_elective4w4 <= 3;
+            M21Dw4 +  M22A_108_67w4 + M22Bw4 + M127Aw4 + M127Bw4 + M185Aw4 + M135Aw4 + M150Aw4 + M150Bw4 + M150Cw4 + M_elective1w4 + M_elective2w4 + M_elective3w4 + M_elective4w4 <= 3;
 
 subto Spring4_course:
-            1 <= M21Ds4 +  M22A_108_67s4 + M22Bs4 + M127As4 + M127Bs4 + M185As4 + M135As4 + M150As4 + M150Bs4 + M150Cs4 + M_elective1s4 + M_elective2s4 + M_elective3s4 + M_elective4s4 <= 3;
+            M21Ds4 +  M22A_108_67s4 + M22Bs4 + M127As4 + M127Bs4 + M185As4 + M135As4 + M150As4 + M150Bs4 + M150Cs4 + M_elective1s4 + M_elective2s4 + M_elective3s4 + M_elective4s4 <= 3;
