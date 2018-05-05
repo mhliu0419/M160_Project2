@@ -1,6 +1,5 @@
-
 set side := { 0 .. 8 };
-
+set square := {0 .. 2} * {0 .. 2};
 
 var x [side*side*side] binary;
 
@@ -8,49 +7,48 @@ subto values: forall <m,n> in side*side do sum <k> in side:x[m,n,k]==1;
 subto rows: forall <n,k> in side*side do sum <m> in side:x[m,n,k]==1;
 subto cols: forall <m,k> in side*side do sum <n> in side:x[m,n,k]==1;
 
-subto left_upper: forall <m,n> in side*side with m <= 3 and n <= 3 do sum <k> in side:x[m,n,k]==1;
-subto left_mid: forall <m,n> in side*side with m > 3 and m <= 6 and n <= 3 do sum <k> in side:x[m,n,k]==1;
-subto left_lower: forall <m,n> in side*side with m > 6 and n <= 3 do sum <k> in side:x[m,n,k]==1;
+subto left_upper: forall <k> in side do sum <m,n> in square:x[m,n,k]==1;
+subto left_mid: forall <k> in side do sum <m,n> in square:x[m+3,n,k]==1;
+subto left_lower: forall <k> in side do sum <m,n> in square:x[m+6,n,k]==1;
 
-subto mid_upper: forall <m,n> in side*side with m <= 3 and n > 3 and n <= 6 do sum <k> in side:x[m,n,k]==1;
-subto mid_mid: forall <m,n> in side*side with m > 3 and m <= 6 and n > 3 and n <= 6 do sum <k> in side:x[m,n,k]==1;
-subto mid_lower: forall <m,n> in side*side with m > 6 and n > 3 and n <= 6 do sum <k> in side:x[m,n,k]==1;
+subto mid_upper: forall <k> in side do sum <m,n> in square:x[m,n+3,k]==1;
+subto mid_mid: forall <k> in side do sum <m,n> in square:x[m+3,n+3,k]==1;
+subto mid_lower: forall <k> in side do sum <m,n> in square:x[m+6,n+3,k]==1;
 
-subto right_upper: forall <m,n> in side*side with m <= 3 and n > 6 do sum <k> in side:x[m,n,k]==1;
-subto right_mid: forall <m,n> in side*side with m > 3 and m <= 6 and n > 6 do sum <k> in side:x[m,n,k]==1;
-subto right_lower: forall <m,n> in side*side with m > 6 and n > 6 do sum <k> in side:x[m,n,k]==1;
+subto right_upper: forall <k> in side do sum <m,n> in square:x[m,n+6,k]==1;
+subto right_mid: forall <k> in side do sum <m,n> in square:x[m+3,n+6,k]==1;
+subto right_lower: forall <k> in side do sum <m,n> in square:x[m+6,n+6,k]==1;
 
 
-subto x_119: x[0,0,8] == 1;
-subto x_148: x[0,3,7] == 1;
-subto x_172: x[0,6,1] == 1;
-subto x_187: x[0,7,6] == 1;
-subto x_193: x[0,8,2] == 1;
+subto x_118: x[0,0,7] == 1;
+subto x_167: x[0,5,8] == 1;
 
-subto x_244: x[1,3,3] == 1;
+subto x_223: x[1,1,2] == 1;
+subto x_241: x[1,3,0] == 1;
+subto x_255: x[1,4,4] == 1;
+subto x_297: x[1,8,6] == 1;
 
-subto x_323: x[2,1,2] == 1;
-subto x_332: x[2,2,1] == 1;
-subto x_396: x[2,8,5] == 1;
+subto x_383: x[2,7,2] == 1;
 
-subto x_411: x[3,0,0] == 1;
-subto x_438: x[3,2,7] == 1;
+subto x_419: x[3,0,8] == 1;
+subto x_471: x[3,6,0] == 1;
+subto x_486: x[3,7,5] == 1;
+subto x_498: x[3,8,7] == 1;
 
-subto x_535: x[4,2,4] == 1;
-subto x_558: x[4,4,7] == 1;
-subto x_573: x[4,6,2] == 1;
+subto x_536: x[4,2,5] == 1;
+subto x_564: x[4,5,3] == 1;
 
-subto x_629: x[5,1,8] == 1;
-subto x_665: x[5,5,4] == 1;
-subto x_686: x[5,7,5] == 1;
+subto x_611: x[5,0,0] == 1;
+subto x_627: x[5,1,6] == 1;
+subto x_645: x[5,3,4] == 1;
+subto x_674: x[5,6,3] == 1;
 
-subto x_751: x[6,4,0] == 1;
-subto x_776: x[6,6,5] == 1;
-subto x_782: x[6,7,1] == 1;
+subto x_772: x[6,6,1] == 1;
+subto x_791: x[6,8,0] == 1;
 
-subto x_862: x[7,5,1] == 1;
-subto x_878: x[7,6,7] == 1;
+subto x_812: x[7,0,1] == 1;
+subto x_887: x[7,7,6] == 1;
 
-subto x_915: x[8,0,4] == 1;
-subto x_933: x[8,2,2] == 1;
-subto x_999: x[8,8,8] == 1;
+subto x_916: x[8,0,5] == 1;
+subto x_948: x[8,3,7] == 1;
+subto x_984: x[8,7,3] == 1;
