@@ -82,16 +82,19 @@ subto x_999: x[8,8,8] == 1;
 
 
 
-%param p := 3;
-%set J := { 0 .. p*p - 1 };
-%set KK := { 0 .. p - 1} * { 0 .. p - 1};
 
-%var x [J*J*J] binary;
+param p := 3;
+set side := { 0 .. 8 };
 
-%subto rows: forall <i,j> in J*J do sum <k> in J:x[i,j,k]==1;
-%subto cols: forall <j,k> in J*J do sum <i> in J:x[i,j,k]==1;
-%subto nums: forall <i,k> in J*J do sum <j> in J:x[i,j,k]==1;
+set KK := { 0 .. 2} * { 0 .. 2};
 
-%subto squares: forall <m,n,k> in KK*J do sum <i,j> in KK:x[m*p+i,n*p+j,k]==1;
+var x [side*side*side] binary;
+
+subto values: forall <m,n> in side*side do sum <k> in side:x[m,n,k]==1;
+subto rows: forall <n,k> in side*side do sum <m> in side:x[m,n,k]==1;
+subto cols: forall <m,k> in side*side do sum <n> in side:x[m,n,k]==1;
+
+subto squares: forall <m,n,k> in KK*side do sum <i,j> in KK:x[m*p+i,n*p+j,k]==1;
+
 
 
