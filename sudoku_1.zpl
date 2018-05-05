@@ -1,8 +1,6 @@
 
-param p := 3;
 set side := { 0 .. 8 };
-
-set KK := { 0 .. 2} * { 0 .. 2};
+set square := {0 .. 2} * {0 .. 2};
 
 var x [side*side*side] binary;
 
@@ -10,20 +8,17 @@ subto values: forall <m,n> in side*side do sum <k> in side:x[m,n,k]==1;
 subto rows: forall <n,k> in side*side do sum <m> in side:x[m,n,k]==1;
 subto cols: forall <m,k> in side*side do sum <n> in side:x[m,n,k]==1;
 
+subto left_upper: forall <k> in side do sum <m,n> in square:x[m,n,k]==1;
+subto left_mid: forall <k> in side do sum <m,n> in square:x[m+3,n,k]==1;
+subto left_lower: forall <k> in side do sum <m,n> in square:x[m+6,n,k]==1;
 
+subto mid_upper: forall <k> in side do sum <m,n> in square:x[m,n+3,k]==1;
+subto mid_mid: forall <k> in side do sum <m,n> in square:x[m+3,n+3,k]==1;
+subto mid_lower: forall <k> in side do sum <m,n> in square:x[m+6,n+3,k]==1;
 
-
-subto left_upper: forall <m,n> in side*side with m <= 2 and n <= 2 do sum <k> in side:x[m,n,k]==1;
-subto left_mid: forall <m,n> in side*side with m > 2 and m <= 5 and n <= 2 do sum <k> in side:x[m,n,k]==1;
-subto left_lower: forall <m,n> in side*side with m > 5 and n <= 2 do sum <k> in side:x[m,n,k]==1;
-
-subto mid_upper: forall <m,n> in side*side with m <= 2 and n > 3 and n <= 6 do sum <k> in side:x[m,n,k]==1;
-subto mid_mid: forall <m,n> in side*side with m > 2 and m <= 5 and n > 2 and n <= 5 do sum <k> in side:x[m,n,k]==1;
-subto mid_lower: forall <m,n> in side*side with m > 5 and n > 2 and n <= 5 do sum <k> in side:x[m,n,k]==1;
-
-subto right_upper: forall <m,n> in side*side with m <= 2 and n > 5 do sum <k> in side:x[m,n,k]==1;
-subto right_mid: forall <m,n> in side*side with m > 2 and m <= 5 and n > 5 do sum <k> in side:x[m,n,k]==1;
-subto right_lower: forall <m,n> in side*side with m > 5 and n > 5 do sum <k> in side:x[m,n,k]==1;
+subto right_upper: forall <k> in side do sum <m,n> in square:x[m,n+6,k]==1;
+subto right_mid: forall <k> in side do sum <m,n> in square:x[m+3,n+6,k]==1;
+subto right_lower: forall <k> in side do sum <m,n> in square:x[m+6,n+6,k]==1;
 
 
 subto x_141: x[0,3,0] == 1;
@@ -72,31 +67,3 @@ subto x_549: x[4,3,8] == 1;
 subto x_759: x[6,4,8] == 1;
 subto x_839: x[7,2,8] == 1;
 subto x_999: x[8,8,8] == 1;
-
-
-
-
-
-
-
-
-
-
-
-
-
-param p := 3;
-set side := { 0 .. 8 };
-
-set KK := { 0 .. 2} * { 0 .. 2};
-
-var x [side*side*side] binary;
-
-subto values: forall <m,n> in side*side do sum <k> in side:x[m,n,k]==1;
-subto rows: forall <n,k> in side*side do sum <m> in side:x[m,n,k]==1;
-subto cols: forall <m,k> in side*side do sum <n> in side:x[m,n,k]==1;
-
-subto squares: forall <m,n,k> in KK*side do sum <i,j> in KK:x[m*p+i,n*p+j,k]==1;
-
-
-
