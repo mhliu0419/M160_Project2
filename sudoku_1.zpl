@@ -1,7 +1,8 @@
 
-
+param p := 3;
 set side := { 0 .. 8 };
 
+set KK := { 0 .. 2} * { 0 .. 2};
 
 var x [side*side*side] binary;
 
@@ -9,19 +10,20 @@ subto values: forall <m,n> in side*side do sum <k> in side:x[m,n,k]==1;
 subto rows: forall <n,k> in side*side do sum <m> in side:x[m,n,k]==1;
 subto cols: forall <m,k> in side*side do sum <n> in side:x[m,n,k]==1;
 
-subto left_upper: forall <m,n> in side*side with m <= 3 and n <= 3 do sum <k> in side:x[m,n,k]==1;
-subto left_mid: forall <m,n> in side*side with m > 3 and m <= 6 and n <= 3 do sum <k> in side:x[m,n,k]==1;
-subto left_lower: forall <m,n> in side*side with m > 6 and n <= 3 do sum <k> in side:x[m,n,k]==1;
-
-subto mid_upper: forall <m,n> in side*side with m <= 3 and n > 3 and n <= 6 do sum <k> in side:x[m,n,k]==1;
-subto mid_mid: forall <m,n> in side*side with m > 3 and m <= 6 and n > 3 and n <= 6 do sum <k> in side:x[m,n,k]==1;
-subto mid_lower: forall <m,n> in side*side with m > 6 and n > 3 and n <= 6 do sum <k> in side:x[m,n,k]==1;
-
-subto right_upper: forall <m,n> in side*side with m <= 3 and n > 6 do sum <k> in side:x[m,n,k]==1;
-subto right_mid: forall <m,n> in side*side with m > 3 and m <= 6 and n > 6 do sum <k> in side:x[m,n,k]==1;
-subto right_lower: forall <m,n> in side*side with m > 6 and n > 6 do sum <k> in side:x[m,n,k]==1;
 
 
+
+subto left_upper: forall <m,n> in side*side with m <= 2 and n <= 2 do sum <k> in side:x[m,n,k]==1;
+subto left_mid: forall <m,n> in side*side with m > 2 and m <= 5 and n <= 2 do sum <k> in side:x[m,n,k]==1;
+subto left_lower: forall <m,n> in side*side with m > 5 and n <= 2 do sum <k> in side:x[m,n,k]==1;
+
+subto mid_upper: forall <m,n> in side*side with m <= 2 and n > 3 and n <= 6 do sum <k> in side:x[m,n,k]==1;
+subto mid_mid: forall <m,n> in side*side with m > 2 and m <= 5 and n > 2 and n <= 5 do sum <k> in side:x[m,n,k]==1;
+subto mid_lower: forall <m,n> in side*side with m > 5 and n > 2 and n <= 5 do sum <k> in side:x[m,n,k]==1;
+
+subto right_upper: forall <m,n> in side*side with m <= 2 and n > 5 do sum <k> in side:x[m,n,k]==1;
+subto right_mid: forall <m,n> in side*side with m > 2 and m <= 5 and n > 5 do sum <k> in side:x[m,n,k]==1;
+subto right_lower: forall <m,n> in side*side with m > 5 and n > 5 do sum <k> in side:x[m,n,k]==1;
 
 
 subto x_141: x[0,3,0] == 1;
